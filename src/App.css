@@ -15,6 +15,14 @@
   letter-spacing: -4px;
 }
 
+#link:hover {
+  text-decoration: none;
+}
+
+.total {
+  color: black;
+}
+
 .user {
   width: 40px;
 }

@@ -6,15 +6,20 @@ import { Dropdown } from 'react-bootstrap';
 function Nav(props) {
   const logged_out_nav = (
     <div className="nav">
-      <div className="logo">
-        T
-        <img
-          className="gear"
-          src="./images/gear-logo.png"
-          alt="gear logo"
-        ></img>
-        TAL<span className="garage">GARAGE</span>
-      </div>
+      <a href="/" id="link">
+        <div className="logo">
+          <span className="total">
+            T
+            <img
+              className="gear"
+              src="./images/gear-logo.png"
+              alt="gear logo"
+            ></img>
+            TAL
+          </span>
+          <span className="garage">GARAGE</span>
+        </div>
+      </a>
       <div className="login">
         <p>{props.loggedIn ? `Hello, ${props.username}` : 'Please Log In'}</p>
         <Dropdown>
@@ -33,15 +38,20 @@ function Nav(props) {
 
   const logged_in_nav = (
     <div className="nav">
-      <div className="logo">
-        T
-        <img
-          className="gear"
-          src="./images/gear-logo.png"
-          alt="gear logo"
-        ></img>
-        TAL<span className="garage">GARAGE</span>
-      </div>
+      <a href="/" id="link">
+        <div className="logo">
+          <span className="total">
+            T
+            <img
+              className="gear"
+              src="./images/gear-logo.png"
+              alt="gear logo"
+            ></img>
+            TAL
+          </span>
+          <span className="garage">GARAGE</span>
+        </div>
+      </a>
       <div className="login">
         <p>{props.loggedIn ? `Hello, ${props.username}` : 'Please Log In'}</p>
         <Dropdown>
