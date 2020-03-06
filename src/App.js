@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import './App.css';
+import { Link, Switch, Route } from 'react-router-dom';
 
 function App() {
   const [displayedForm, setDisplayedForm] = useState('');
@@ -77,10 +78,16 @@ function App() {
         loggedIn={loggedIn}
         displayForm={displayForm}
         handleLogout={handleLogout}
+        username={username}
       />
-      <LoginForm handleLogin={handleLogin} />
-      <SignupForm handleSignup={handleSignup} />
-      <h3>{loggedIn ? `Hello, ${username}` : 'Please Log In'}</h3>
+      <Switch>
+        <Route path="/login">
+          <LoginForm handleLogin={handleLogin} />
+        </Route>
+        <Route path="/signup">
+          <SignupForm handleSignup={handleSignup} />
+        </Route>
+      </Switch>
     </div>
   );
 }
