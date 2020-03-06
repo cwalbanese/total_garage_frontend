@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from './components/Nav';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      displayed_form: '',
-      logged_in: localStorage.getItem('token') ? true : false,
-      username: ''
-    };
-  }
+function App() {
+  const [displayedForm, setDisplayedForm] = useState('');
+  const [loggedIn, setLoggedIn] = useState(
+    localStorage.getItem('token') ? true : false
+  );
+  const [username, setUsername] = useState('');
 
-  componentDidMount() {
-    if (this.state.logged_in) {
+  useEffect(() => {
+    if (loggedIn) {
       fetch('https://total-garage.herokuapp.com/garage/current_user/', {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
@@ -23,12 +20,12 @@ class App extends Component {
       })
         .then(res => res.json())
         .then(json => {
-          this.setState({ username: json.username });
+          setUsername(json.username);
         });
     }
-  }
+  }, [loggedIn]);
 
-  handle_login = (e, data) => {
+  const handleLogin = (e, data) => {
     e.preventDefault();
     fetch('https://total-garage.herokuapp.com/token-auth/', {
       method: 'POST',
@@ -40,15 +37,13 @@ class App extends Component {
       .then(res => res.json())
       .then(json => {
         localStorage.setItem('token', json.token);
-        this.setState({
-          logged_in: true,
-          displayed_form: '',
-          username: json.user.username
-        });
+        setLoggedIn(true);
+        setDisplayedForm('');
+        setUsername(json.user.username);
       });
   };
 
-  handle_signup = (e, data) => {
+  const handleSignup = (e, data) => {
     e.preventDefault();
     fetch('https://total-garage.herokuapp.com/garage/users/', {
       method: 'POST',
@@ -60,54 +55,34 @@ class App extends Component {
       .then(res => res.json())
       .then(json => {
         localStorage.setItem('token', json.token);
-        this.setState({
-          logged_in: true,
-          displayed_form: '',
-          username: json.username
-        });
+        setLoggedIn(true);
+        setDisplayedForm('');
+        setUsername(json.username);
       });
   };
 
-  handle_logout = () => {
+  const handleLogout = () => {
     localStorage.removeItem('token');
-    this.setState({ logged_in: false, username: '' });
+    setLoggedIn(false);
+    setUsername('');
   };
 
-  display_form = form => {
-    this.setState({
-      displayed_form: form
-    });
+  const displayForm = form => {
+    setDisplayedForm(form);
   };
 
-  render() {
-    let form;
-    switch (this.state.displayed_form) {
-      case 'login':
-        form = <LoginForm handle_login={this.handle_login} />;
-        break;
-      case 'signup':
-        form = <SignupForm handle_signup={this.handle_signup} />;
-        break;
-      default:
-        form = null;
-    }
-
-    return (
-      <div className="App">
-        <Nav
-          logged_in={this.state.logged_in}
-          display_form={this.display_form}
-          handle_logout={this.handle_logout}
-        />
-        {form}
-        <h3>
-          {this.state.logged_in
-            ? `Hello, ${this.state.username}`
-            : 'Please Log In'}
-        </h3>
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <Nav
+        loggedIn={loggedIn}
+        displayForm={displayForm}
+        handleLogout={handleLogout}
+      />
+      <LoginForm handleLogin={handleLogin} />
+      <SignupForm handleSignup={handleSignup} />
+      <h3>{loggedIn ? `Hello, ${username}` : 'Please Log In'}</h3>
+    </div>
+  );
 }
 
 export default App;
