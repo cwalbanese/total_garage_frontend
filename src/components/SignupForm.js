@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
+import { Redirect } from 'react-router-dom';
 function SignupForm(props) {
   const [login, setLogin] = useState({
     username: '',
@@ -12,7 +12,9 @@ function SignupForm(props) {
     const name = e.target.name;
     setLogin({ ...login, [name]: value });
   };
-
+  if (props.loggedIn) {
+    return <Redirect to="/" />;
+  }
   return (
     <form onSubmit={e => props.handleSignup(e, login)}>
       <h4>Sign Up</h4>

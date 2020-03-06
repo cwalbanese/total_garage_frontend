@@ -23,6 +23,10 @@
   color: #faa501;
 }
 
+.logout {
+  background-color: #f8f9fa;
+}
+
 .login {
   display: flex;
   align-items: center;

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Nav from './components/Nav';
+import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import './App.css';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route, Redirect } from 'react-router-dom';
 
 function App() {
   const [displayedForm, setDisplayedForm] = useState('');
@@ -11,6 +12,7 @@ function App() {
     localStorage.getItem('token') ? true : false
   );
   const [username, setUsername] = useState('');
+  const [loggedOut, setLoggedOut] = useState('');
 
   useEffect(() => {
     if (loggedIn) {
@@ -39,7 +41,7 @@ function App() {
       .then(json => {
         localStorage.setItem('token', json.token);
         setLoggedIn(true);
-        setDisplayedForm('');
+        setLoggedOut(false);
         setUsername(json.user.username);
       });
   };
@@ -57,7 +59,7 @@ function App() {
       .then(json => {
         localStorage.setItem('token', json.token);
         setLoggedIn(true);
-        setDisplayedForm('');
+        setLoggedOut(false);
         setUsername(json.username);
       });
   };
@@ -66,26 +68,29 @@ function App() {
     localStorage.removeItem('token');
     setLoggedIn(false);
     setUsername('');
-  };
-
-  const displayForm = form => {
-    setDisplayedForm(form);
+    setLoggedOut(true);
   };
 
   return (
     <div className="App">
       <Nav
         loggedIn={loggedIn}
-        displayForm={displayForm}
         handleLogout={handleLogout}
         username={username}
       />
       <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
         <Route path="/login">
-          <LoginForm handleLogin={handleLogin} />
+          <LoginForm
+            loggedIn={loggedIn}
+            loggedOut={loggedOut}
+            handleLogin={handleLogin}
+          />
         </Route>
         <Route path="/signup">
-          <SignupForm handleSignup={handleSignup} />
+          <SignupForm loggedIn={loggedIn} handleSignup={handleSignup} />
         </Route>
       </Switch>
     </div>
