@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Nav from './components/Nav';
+import Search from './components/Search';
+import Create from './components/Create';
 import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
@@ -91,6 +93,12 @@ function App() {
         </Route>
         <Route path="/signup">
           <SignupForm loggedIn={loggedIn} handleSignup={handleSignup} />
+        </Route>
+        <Route path="/search">
+          <Search />
+        </Route>
+        <Route path="/create">
+          <Create />
         </Route>
       </Switch>
     </div>
