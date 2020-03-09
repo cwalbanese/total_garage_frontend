@@ -10,8 +10,9 @@ function Results(props) {
     fetch(`https://total-garage.herokuapp.com/garage/repairs/`)
       .then(res => res.json())
       .then(items => {
-        return items.filter(item => item.model === model && item.id === year);
+        return items.filter(item => item.model === model && item.year === year);
       })
+      .then(items => items.sort((a, b) => (a.miles > b.miles ? 1 : -1)))
       .then(setData);
   }, []);
 
