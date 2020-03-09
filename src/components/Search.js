@@ -10,8 +10,6 @@ function Home() {
       .then(setData);
   }, []);
 
-  console.log(data);
-
   if (data) {
     return (
       <>
