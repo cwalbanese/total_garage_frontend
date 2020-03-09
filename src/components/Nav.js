@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 
 function Nav(props) {

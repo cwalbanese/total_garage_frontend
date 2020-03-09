@@ -5,11 +5,11 @@ import Create from './components/Create';
 import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
+import Models from './components/Models';
 import './App.css';
-import { Link, Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 function App() {
-  const [displayedForm, setDisplayedForm] = useState('');
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem('token') ? true : false
   );
@@ -100,6 +100,13 @@ function App() {
         <Route path="/create">
           <Create />
         </Route>
+        <Route
+          exact
+          path="/models/:id"
+          render={routerProps => {
+            return <Models match={routerProps.match} />;
+          }}
+        />
       </Switch>
     </div>
   );
