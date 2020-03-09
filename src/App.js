@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import Search from './components/Search';
 import Create from './components/Create';
 import Home from './components/Home';
+import Results from './components/Results';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Models from './components/Models';
@@ -105,6 +106,13 @@ function App() {
           path="/models/:id"
           render={routerProps => {
             return <Models match={routerProps.match} />;
+          }}
+        />
+        <Route
+          exact
+          path="/models/:year/:model"
+          render={routerProps => {
+            return <Results match={routerProps.match} />;
           }}
         />
       </Switch>

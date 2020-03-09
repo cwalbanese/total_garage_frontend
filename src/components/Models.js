@@ -27,7 +27,11 @@ function Models(props) {
         <p>Models</p>
         <ul>
           {data.map(repair => (
-            <Link id="link" to={'/results/' + repair.id} key={repair.id}>
+            <Link
+              id="link"
+              to={'/models/' + repair.year + '/' + repair.model}
+              key={repair.id}
+            >
               <p>{repair.model}</p>
             </Link>
           ))}
