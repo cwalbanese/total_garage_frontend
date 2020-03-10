@@ -99,7 +99,7 @@ function App() {
           <Search />
         </Route>
         <Route path="/create">
-          <Create />
+          <Create loggedIn={loggedIn} />
         </Route>
         <Route
           exact
