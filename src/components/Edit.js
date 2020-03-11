@@ -22,6 +22,13 @@ function Edit(props) {
 
   const handleEdit = e => {
     e.preventDefault();
+    const repair = {
+      year: form.year ? form.year : data.year,
+      make: form.make ? form.make : data.make,
+      model: form.model ? form.model : data.model,
+      miles: form.miles ? form.miles : data.miles,
+      repair: form.repair ? form.repair : data.repair
+    };
     fetch(`https://total-garage.herokuapp.com/garage/repairs/${id}`, {
       method: 'PUT',
       headers: {
@@ -29,7 +36,7 @@ function Edit(props) {
         Authorization: `JWT ${localStorage.getItem('token')}`
       },
       mode: 'cors',
-      body: JSON.stringify(form)
+      body: JSON.stringify(repair)
     })
       .then(response => response.json())
       .then(data => {
