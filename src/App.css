@@ -1,15 +1,8 @@
 #body {
-  background: #6c757d;
   background: -moz-linear-gradient(top, #6c757d 0%, #6c757d 65%, #3d3b3c 100%);
-  background: -webkit-linear-gradient(
-    top,
-    #6c757d 0%,
-    #6c757d 65%,
-    #3d3b3c 100%
-  );
-  background: linear-gradient(to bottom, #6c757d 0%, #6c757d 65%, #3d3b3c 100%);
+  background: linear-gradient(to bottom, #6c757d 0%, #6c757d 65%, #3d3b3c 100%)
+    fixed;
   font-family: 'PT Sans', sans-serif;
-  height: 100vh;
 }
 
 .nav {
@@ -124,4 +117,16 @@
 }
 .gear {
   width: 40px;
+}
+
+.search-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.list-item {
+  color: #faa501;
+  font-size: 5em;
 }

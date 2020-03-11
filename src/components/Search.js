@@ -19,16 +19,15 @@ function Home() {
 
   if (data) {
     return (
-      <>
-        <p>Search</p>
-        <ul>
-          {data.map(year => (
-            <Link id="link" to={'/makes/' + year.year} key={year.id}>
-              <p>{year.year}</p>
-            </Link>
-          ))}
-        </ul>
-      </>
+      <div className="search-list">
+        <p className="welcome-message">Please select a year:</p>
+
+        {data.map(year => (
+          <Link id="link" to={'/makes/' + year.year} key={year.id}>
+            <p className="list-item">{year.year}</p>
+          </Link>
+        ))}
+      </div>
     );
   } else {
     return <p>loading...</p>;
