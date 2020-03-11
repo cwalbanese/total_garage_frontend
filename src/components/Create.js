@@ -36,7 +36,7 @@ function Create(props) {
   };
 
   if (createdId) {
-    return <Redirect to="/" />;
+    return <Redirect to="/thankyou" />;
   }
 
   if (props.loggedIn) {

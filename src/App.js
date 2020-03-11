@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Makes from './components/Makes';
 import Models from './components/Models';
+import Thankyou from './components/Thankyou';
 import Edit from './components/Edit';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
@@ -131,6 +132,9 @@ function App() {
             return <Edit loggedIn={loggedIn} match={routerProps.match} />;
           }}
         />
+        <Route path="/thankyou">
+          <Thankyou />
+        </Route>
       </Switch>
     </div>
   );

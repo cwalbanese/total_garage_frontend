@@ -51,7 +51,7 @@ function Edit(props) {
   };
 
   if (createdId) {
-    return <Redirect to="/" />;
+    return <Redirect to="/thankyou" />;
   }
 
   if (props.loggedIn) {
