@@ -76,30 +76,36 @@ function Results(props) {
 
   if (data) {
     return (
-      <>
-        <p>Results for {model}</p>
-        <ul>
+      <div>
+        <p className="results-message">Results for {model}:</p>
+        <div className="results">
           {data.map(repair => (
             <div key={repair.id}>
-              <p>
-                Miles: {repair.miles} Repair: {repair.repair}
+              <p className="results-item">
+                <Link to={'/' + repair.id + '/edit'}>
+                  <Button variant="primary">Edit</Button>
+                </Link>
+                &nbsp;
+                <Button
+                  id={repair.model}
+                  value={repair.id}
+                  onClick={handleDelete}
+                  variant="danger"
+                >
+                  Delete
+                </Button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span className="orange-text">Miles: </span>
+                {repair.miles}{' '}
+                <span className="orange-text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;Repair:{' '}
+                </span>
+                {repair.repair}
               </p>
-              <Link to={'/' + repair.id + '/edit'}>
-                <Button variant="primary">Edit</Button>
-              </Link>
-              &nbsp;
-              <Button
-                id={repair.model}
-                value={repair.id}
-                onClick={handleDelete}
-                variant="danger"
-              >
-                Delete
-              </Button>
             </div>
           ))}
-        </ul>
-      </>
+        </div>
+      </div>
     );
   } else {
     return <p>loading...</p>;

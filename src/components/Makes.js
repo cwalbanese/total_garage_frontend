@@ -22,18 +22,18 @@ function Makes(props) {
 
   if (data && data !== []) {
     return (
-      <>
-        <p className="welcome-message">Select a make:</p>
+      <div className="search-list">
+        <p className="welcome-message">Please select a make:</p>
         {data.map(repair => (
           <Link
             id="link"
             to={'/makes/' + repair.year + '/' + repair.make}
             key={repair.id}
           >
-            <p>{repair.make}</p>
+            <p className="list-item">{repair.make}</p>
           </Link>
         ))}
-      </>
+      </div>
     );
   } else {
     return <p>loading...</p>;

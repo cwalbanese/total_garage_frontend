@@ -40,7 +40,7 @@ function Nav(props) {
             T
             <img
               className="gear"
-              src="./images/gear-logo.png"
+              src={process.env.PUBLIC_URL + '/images/gear-logo.png'}
               alt="gear logo"
             ></img>
             TAL
@@ -51,12 +51,16 @@ function Nav(props) {
       <div className="login">
         <p className="login-message">
           {props.loggedIn
-            ? `Loged in as ${props.username}`
+            ? `Logged in as ${props.username}`
             : 'Click User to Login'}
         </p>
         <Dropdown>
           <Dropdown.Toggle variant="*" id="dropdown-basic">
-            <img className="user" src="./images/user.png" alt="user"></img>
+            <img
+              className="user"
+              src={process.env.PUBLIC_URL + '/images/user.png'}
+              alt="user"
+            ></img>
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
