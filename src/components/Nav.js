@@ -15,7 +15,9 @@ function Nav(props) {
         </div>
       </a>
       <div className="login">
-        <p>{props.loggedIn ? `Hello, ${props.username}` : 'Please Log In'}</p>
+        <p className="login-message">
+          {props.loggedIn ? `Hello, ${props.username}` : 'Click User to Login'}
+        </p>
         <Dropdown>
           <Dropdown.Toggle variant="*" id="dropdown-basic">
             <img className="user" src="./images/user.png" alt="user"></img>
@@ -47,7 +49,11 @@ function Nav(props) {
         </div>
       </a>
       <div className="login">
-        <p>{props.loggedIn ? `Hello, ${props.username}` : 'Please Log In'}</p>
+        <p className="login-message">
+          {props.loggedIn
+            ? `Loged in as ${props.username}`
+            : 'Click User to Login'}
+        </p>
         <Dropdown>
           <Dropdown.Toggle variant="*" id="dropdown-basic">
             <img className="user" src="./images/user.png" alt="user"></img>

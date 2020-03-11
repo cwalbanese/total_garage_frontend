@@ -3,10 +3,13 @@ import React from 'react';
 function Home() {
   return (
     <div>
-      <p className="welcome-message">
-        Welcome to Total Garage, where you can search for repairs when car
-        shopping or fixing your own car.
-      </p>
+      <div className="welcome-div">
+        <p className="welcome-message">
+          Welcome to Total Garage! Would you like to search our database for
+          previous repairs? Or submit a repair for others to view?
+        </p>
+      </div>
+
       <div className="home-container">
         <a href="/search" id="link">
           <div className="home-button">
