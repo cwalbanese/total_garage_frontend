@@ -7,7 +7,8 @@ function Create(props) {
     model: '',
     miles: '',
     repair: '',
-    year: 1
+    year: '',
+    make: ''
   });
   const [createdId, setCreatedId] = useState('');
 
@@ -43,8 +44,10 @@ function Create(props) {
     return (
       <form onSubmit={handleCreate}>
         <h4>Create</h4>
-        <label htmlFor="year">Year/Make: </label>
-        <input type="number" name="year" onChange={handleChange} />
+        <label htmlFor="year">Year: </label>
+        <input type="text" name="year" onChange={handleChange} />
+        <label htmlFor="year">Make: </label>
+        <input type="text" name="make" onChange={handleChange} />
         <label htmlFor="model">Model: </label>
         <input type="text" name="model" onChange={handleChange} />
         <label htmlFor="miles">Miles: </label>
