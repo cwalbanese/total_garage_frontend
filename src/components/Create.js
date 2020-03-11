@@ -4,15 +4,16 @@ import { Redirect } from 'react-router-dom';
 
 function Create(props) {
   const [form, setForm] = useState({
-    year: '',
     model: '',
     miles: '',
-    repair: ''
+    repair: '',
+    year: 1
   });
   const [createdId, setCreatedId] = useState('');
 
   const handleCreate = e => {
     e.preventDefault();
+    console.log(JSON.stringify(form));
     fetch('https://total-garage.herokuapp.com/garage/repairs', {
       method: 'POST',
       headers: {
@@ -39,12 +40,11 @@ function Create(props) {
   }
 
   if (props.loggedIn) {
-    console.log(form);
     return (
       <form onSubmit={handleCreate}>
         <h4>Create</h4>
         <label htmlFor="year">Year/Make: </label>
-        <input type="text" name="year" onChange={handleChange} />
+        <input type="number" name="year" onChange={handleChange} />
         <label htmlFor="model">Model: </label>
         <input type="text" name="model" onChange={handleChange} />
         <label htmlFor="miles">Miles: </label>

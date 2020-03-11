@@ -8,12 +8,7 @@ function Nav(props) {
       <a href="/" id="link">
         <div className="logo">
           <span className="total">
-            T
-            <img
-              className="gear"
-              src="./images/gear-logo.png"
-              alt="gear logo"
-            ></img>
+            T<img className="gear" src="./images/gear-logo.png" alt=""></img>
             TAL
           </span>
           <span className="garage">GARAGE</span>

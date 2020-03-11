@@ -112,7 +112,7 @@ function App() {
           exact
           path="/models/:year/:model"
           render={routerProps => {
-            return <Results match={routerProps.match} />;
+            return <Results loggedIn={loggedIn} match={routerProps.match} />;
           }}
         />
       </Switch>
