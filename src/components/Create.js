@@ -15,7 +15,7 @@ function Create(props) {
   const handleCreate = e => {
     e.preventDefault();
     console.log(JSON.stringify(form));
-    fetch('https://total-garage.herokuapp.com/garage/repairs', {
+    fetch('https://total-garage.herokuapp.com/garage/repairs/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
