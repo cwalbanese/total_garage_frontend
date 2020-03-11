@@ -4,10 +4,17 @@ function Home() {
   const [data, setData] = useState('');
 
   useEffect(() => {
-    fetch('https://total-garage.herokuapp.com/garage/years/')
+    fetch('https://total-garage.herokuapp.com/garage/repairs/')
       .then(res => res.json())
-      .then(items => items.sort((a, b) => (a.year_make > b.year_make ? 1 : -1)))
-      .then(setData);
+      .then(items => items.sort((a, b) => (a.year > b.year ? 1 : -1)))
+      .then(response => {
+        const unique = Array.from(new Set(response.map(a => a.year))).map(
+          model => {
+            return response.find(a => a.year === model);
+          }
+        );
+        setData(unique);
+      });
   }, []);
 
   if (data) {
@@ -16,8 +23,8 @@ function Home() {
         <p>Search</p>
         <ul>
           {data.map(year => (
-            <Link id="link" to={'/models/' + year.id} key={year.id}>
-              <p>{year.year_make}</p>
+            <Link id="link" to={'/models/' + year.year} key={year.id}>
+              <p>{year.year}</p>
             </Link>
           ))}
         </ul>

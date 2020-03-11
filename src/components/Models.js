@@ -3,36 +3,37 @@ import { Link } from 'react-router-dom';
 
 function Models(props) {
   const [data, setData] = useState('');
-  const year = props.match.params.id;
+  const year = props.match.params.year;
 
   useEffect(() => {
     fetch(`https://total-garage.herokuapp.com/garage/repairs/`)
       .then(res => res.json())
-      .then(items => {
-        return items.filter(item => item.year === parseInt(year));
+      .then(response => {
+        return response.filter(item => item.year === year);
       })
       .then(response => {
-        const unique = Array.from(new Set(response.map(a => a.model))).map(
-          model => {
-            return response.find(a => a.model === model);
+        const unique = Array.from(new Set(response.map(a => a.make))).map(
+          make => {
+            return response.find(a => a.make === make);
           }
         );
         setData(unique);
       });
   }, []);
 
-  if (data) {
+  if (data && data !== []) {
+    console.log(data);
     return (
       <>
-        <p>Models</p>
+        <p>Makes</p>
         <ul>
           {data.map(repair => (
             <Link
               id="link"
-              to={'/models/' + repair.year + '/' + repair.model}
+              to={'/models/' + repair.year + '/' + repair.make}
               key={repair.id}
             >
-              <p>{repair.model}</p>
+              <p>{repair.make}</p>
             </Link>
           ))}
         </ul>
