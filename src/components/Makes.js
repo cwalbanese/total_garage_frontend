@@ -4,19 +4,16 @@ import { Link } from 'react-router-dom';
 function Makes(props) {
   const [data, setData] = useState('');
   const year = props.match.params.year;
-  const make = props.match.params.make;
 
   useEffect(() => {
     fetch('https://total-garage.herokuapp.com/garage/repairs/')
       .then(res => res.json())
-      .then(response =>
-        response.filter(a => a.year === year && a.make === make)
-      )
-      .then(items => items.sort((a, b) => (a.model > b.model ? 1 : -1)))
+      .then(response => response.filter(a => a.year === year))
+      .then(items => items.sort((a, b) => (a.make > b.make ? 1 : -1)))
       .then(response => {
-        const unique = Array.from(new Set(response.map(a => a.model))).map(
-          model => {
-            return response.find(a => a.model === model);
+        const unique = Array.from(new Set(response.map(a => a.make))).map(
+          make => {
+            return response.find(a => a.make === make);
           }
         );
         setData(unique);
@@ -31,12 +28,10 @@ function Makes(props) {
           {data.map(repair => (
             <Link
               id="link"
-              to={
-                '/makes/' + repair.year + '/' + repair.make + '/' + repair.model
-              }
+              to={'/makes/' + repair.year + '/' + repair.make}
               key={repair.id}
             >
-              <p>{repair.model}</p>
+              <p>{repair.make}</p>
             </Link>
           ))}
         </ul>

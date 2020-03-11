@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
-function Create(props) {
+function Edit(props) {
   const [form, setForm] = useState({
     model: '',
     miles: '',
@@ -10,12 +10,20 @@ function Create(props) {
     year: '',
     make: ''
   });
+  const [data, setData] = useState('');
   const [createdId, setCreatedId] = useState('');
+  const id = props.match.params.id;
 
-  const handleCreate = e => {
+  useEffect(() => {
+    fetch(`https://total-garage.herokuapp.com/garage/repairs/${id}`)
+      .then(res => res.json())
+      .then(setData);
+  }, []);
+
+  const handleEdit = e => {
     e.preventDefault();
-    fetch('https://total-garage.herokuapp.com/garage/repairs/', {
-      method: 'POST',
+    fetch(`https://total-garage.herokuapp.com/garage/repairs/${id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `JWT ${localStorage.getItem('token')}`
@@ -41,18 +49,43 @@ function Create(props) {
 
   if (props.loggedIn) {
     return (
-      <form onSubmit={handleCreate}>
-        <h4>Create</h4>
+      <form onSubmit={handleEdit}>
+        <h4>Edit</h4>
         <label htmlFor="year">Year: </label>
-        <input type="text" name="year" onChange={handleChange} />
+        <input
+          type="text"
+          name="year"
+          onChange={handleChange}
+          defaultValue={data.year}
+        />
         <label htmlFor="year">Make: </label>
-        <input type="text" name="make" onChange={handleChange} />
+        <input
+          type="text"
+          name="make"
+          onChange={handleChange}
+          defaultValue={data.make}
+        />
         <label htmlFor="model">Model: </label>
-        <input type="text" name="model" onChange={handleChange} />
+        <input
+          type="text"
+          name="model"
+          onChange={handleChange}
+          defaultValue={data.model}
+        />
         <label htmlFor="miles">Miles: </label>
-        <input type="text" name="miles" onChange={handleChange} />
+        <input
+          type="text"
+          name="miles"
+          onChange={handleChange}
+          defaultValue={data.miles}
+        />
         <label htmlFor="repair">Repair: </label>
-        <input type="text" name="repair" onChange={handleChange} />
+        <input
+          type="text"
+          name="repair"
+          onChange={handleChange}
+          defaultValue={data.repair}
+        />
         <input type="submit" />
       </form>
     );
@@ -85,4 +118,4 @@ function Create(props) {
   }
 }
 
-export default Create;
+export default Edit;

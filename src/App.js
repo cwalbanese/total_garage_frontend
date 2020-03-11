@@ -6,7 +6,9 @@ import Home from './components/Home';
 import Results from './components/Results';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
+import Makes from './components/Makes';
 import Models from './components/Models';
+import Edit from './components/Edit';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
@@ -103,16 +105,30 @@ function App() {
         </Route>
         <Route
           exact
-          path="/models/:id"
+          path="/makes/:year"
           render={routerProps => {
-            return <Models match={routerProps.match} />;
+            return <Makes match={routerProps.match} />;
           }}
         />
         <Route
           exact
-          path="/models/:year/:model"
+          path="/makes/:year/:make"
+          render={routerProps => {
+            return <Models loggedIn={loggedIn} match={routerProps.match} />;
+          }}
+        />
+        <Route
+          exact
+          path="/makes/:year/:make/:model"
           render={routerProps => {
             return <Results loggedIn={loggedIn} match={routerProps.match} />;
+          }}
+        />
+        <Route
+          exact
+          path="/:id/edit"
+          render={routerProps => {
+            return <Edit loggedIn={loggedIn} match={routerProps.match} />;
           }}
         />
       </Switch>

@@ -23,7 +23,7 @@ function Home() {
         <p>Search</p>
         <ul>
           {data.map(year => (
-            <Link id="link" to={'/models/' + year.year} key={year.id}>
+            <Link id="link" to={'/makes/' + year.year} key={year.id}>
               <p>{year.year}</p>
             </Link>
           ))}

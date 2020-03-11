@@ -6,12 +6,11 @@ function Results(props) {
   const [data, setData] = useState('');
   const [deleted, setDeleted] = useState(false);
   const model = props.match.params.model;
-  const year = parseInt(props.match.params.year);
-  let id = 1;
+  const year = props.match.params.year;
 
   const handleDelete = e => {
     e.preventDefault();
-    id = e.target.value;
+    let id = e.target.value;
     fetch(`https://total-garage.herokuapp.com/garage/repairs/${id}`, {
       method: 'DELETE',
       headers: {
@@ -27,12 +26,14 @@ function Results(props) {
   };
 
   useEffect(() => {
-    fetch(`https://total-garage.herokuapp.com/garage/repairs/`)
+    fetch('https://total-garage.herokuapp.com/garage/repairs/')
       .then(res => res.json())
-      .then(items => {
-        return items.filter(item => item.model === model && item.year === year);
-      })
-      .then(items => items.sort((a, b) => (a.miles > b.miles ? 1 : -1)))
+      .then(response =>
+        response.filter(a => a.year === year && a.model === model)
+      )
+      .then(res =>
+        res.sort((a, b) => (parseInt(a.miles) > parseInt(b.miles) ? 1 : -1))
+      )
       .then(setData);
   }, [deleted]);
 
@@ -46,7 +47,10 @@ function Results(props) {
               <p>
                 Miles: {repair.miles} Repair: {repair.repair}
               </p>
-              <Button variant="primary">Edit</Button>&nbsp;
+              <Link to={'/' + repair.id + '/edit'}>
+                <Button variant="primary">Edit</Button>
+              </Link>
+              &nbsp;
               <Button
                 id={repair.model}
                 value={repair.id}
