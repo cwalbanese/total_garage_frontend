@@ -21,7 +21,7 @@ function SignupForm(props) {
     <div className="form-container">
       <Form onSubmit={e => props.handleSignup(e, login)}>
         <Form.Row>
-          <Form.Group as={Col} controlId="formGridEmail">
+          <Form.Group as={Col}>
             <Form.Label htmlFor="username">Username:</Form.Label>
             <Form.Control
               type="text"
@@ -32,7 +32,7 @@ function SignupForm(props) {
             />
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridPassword">
+          <Form.Group as={Col}>
             <Form.Label>Password:</Form.Label>
             <Form.Control
               type="password"

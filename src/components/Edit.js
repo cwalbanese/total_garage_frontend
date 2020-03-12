@@ -59,8 +59,8 @@ function Edit(props) {
       <div className="form-container">
         <Form onSubmit={handleEdit}>
           <Form.Row>
-            <Form.Group as={Col} controlId="formGridYear">
-              <Form.Label htmlFor="year">Year:</Form.Label>
+            <Form.Group as={Col}>
+              <Form.Label>Year:</Form.Label>
               <Form.Control
                 type="text"
                 name="year"
@@ -69,8 +69,8 @@ function Edit(props) {
               />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridMake">
-              <Form.Label htmlFor="make">Make:</Form.Label>
+            <Form.Group as={Col}>
+              <Form.Label>Make:</Form.Label>
               <Form.Control
                 type="text"
                 name="make"
@@ -81,8 +81,8 @@ function Edit(props) {
           </Form.Row>
 
           <Form.Row>
-            <Form.Group as={Col} controlId="formGridModel">
-              <Form.Label htmlFor="model">Model:</Form.Label>
+            <Form.Group as={Col}>
+              <Form.Label>Model:</Form.Label>
               <Form.Control
                 type="text"
                 name="model"
@@ -91,8 +91,8 @@ function Edit(props) {
               />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridMiles">
-              <Form.Label htmlFor="miles">Miles:</Form.Label>
+            <Form.Group as={Col}>
+              <Form.Label>Miles:</Form.Label>
               <Form.Control
                 type="text"
                 name="miles"
@@ -101,8 +101,8 @@ function Edit(props) {
               />
             </Form.Group>
           </Form.Row>
-          <Form.Group controlId="repairTextArea">
-            <Form.Label htmlFor="repair">Repair:</Form.Label>
+          <Form.Group>
+            <Form.Label>Repair:</Form.Label>
             <Form.Control
               type="text"
               name="repair"
