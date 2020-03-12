@@ -8,7 +8,6 @@ function Results(props) {
   const [loggedOut, setLoggedOut] = useState(false);
   const model = props.match.params.model;
   const year = props.match.params.year;
-  const make = props.match.params.make;
   const loggedIn = props.loggedIn;
 
   const handleDelete = e => {
@@ -81,27 +80,34 @@ function Results(props) {
         <div className="results">
           {data.map(repair => (
             <div key={repair.id}>
-              <p className="results-item">
-                <Link to={'/' + repair.id + '/edit'}>
-                  <Button variant="primary">Edit</Button>
-                </Link>
-                &nbsp;
-                <Button
-                  id={repair.model}
-                  value={repair.id}
-                  onClick={handleDelete}
-                  variant="danger"
-                >
-                  Delete
-                </Button>
+              <div className="results-item">
+                <div className="button-pair">
+                  <Link to={'/' + repair.id + '/edit'}>
+                    <Button variant="outline-light" size="sm">
+                      Edit
+                    </Button>
+                  </Link>
+                  &nbsp;
+                  <Button
+                    id={repair.model}
+                    value={repair.id}
+                    onClick={handleDelete}
+                    variant="outline-light"
+                    size="sm"
+                  >
+                    Delete
+                  </Button>
+                </div>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className="orange-text">Miles: </span>
-                {repair.miles}{' '}
-                <span className="orange-text">
-                  &nbsp;&nbsp;&nbsp;&nbsp;Repair:{' '}
+                <span className="results-text">
+                  <span className="orange-text">Miles: </span>
+                  {repair.miles}{' '}
+                  <span className="orange-text">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Repair:{' '}
+                  </span>
+                  {repair.repair}
                 </span>
-                {repair.repair}
-              </p>
+              </div>
             </div>
           ))}
         </div>

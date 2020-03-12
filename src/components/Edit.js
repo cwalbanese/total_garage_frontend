@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
 function Edit(props) {
@@ -56,45 +56,67 @@ function Edit(props) {
 
   if (props.loggedIn) {
     return (
-      <form onSubmit={handleEdit}>
-        <h4>Edit</h4>
-        <label htmlFor="year">Year: </label>
-        <input
-          type="text"
-          name="year"
-          onChange={handleChange}
-          defaultValue={data.year}
-        />
-        <label htmlFor="year">Make: </label>
-        <input
-          type="text"
-          name="make"
-          onChange={handleChange}
-          defaultValue={data.make}
-        />
-        <label htmlFor="model">Model: </label>
-        <input
-          type="text"
-          name="model"
-          onChange={handleChange}
-          defaultValue={data.model}
-        />
-        <label htmlFor="miles">Miles: </label>
-        <input
-          type="text"
-          name="miles"
-          onChange={handleChange}
-          defaultValue={data.miles}
-        />
-        <label htmlFor="repair">Repair: </label>
-        <input
-          type="text"
-          name="repair"
-          onChange={handleChange}
-          defaultValue={data.repair}
-        />
-        <input type="submit" />
-      </form>
+      <div className="form-container">
+        <Form onSubmit={handleEdit}>
+          <Form.Row>
+            <Form.Group as={Col} controlId="formGridYear">
+              <Form.Label htmlFor="year">Year:</Form.Label>
+              <Form.Control
+                type="text"
+                name="year"
+                onChange={handleChange}
+                defaultValue={data.year}
+              />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridMake">
+              <Form.Label htmlFor="make">Make:</Form.Label>
+              <Form.Control
+                type="text"
+                name="make"
+                onChange={handleChange}
+                defaultValue={data.make}
+              />
+            </Form.Group>
+          </Form.Row>
+
+          <Form.Row>
+            <Form.Group as={Col} controlId="formGridModel">
+              <Form.Label htmlFor="model">Model:</Form.Label>
+              <Form.Control
+                type="text"
+                name="model"
+                onChange={handleChange}
+                defaultValue={data.model}
+              />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridMiles">
+              <Form.Label htmlFor="miles">Miles:</Form.Label>
+              <Form.Control
+                type="text"
+                name="miles"
+                onChange={handleChange}
+                defaultValue={data.miles}
+              />
+            </Form.Group>
+          </Form.Row>
+          <Form.Group controlId="repairTextArea">
+            <Form.Label htmlFor="repair">Repair:</Form.Label>
+            <Form.Control
+              type="text"
+              name="repair"
+              onChange={handleChange}
+              defaultValue={data.repair}
+              as="textarea"
+              rows="3"
+            />
+          </Form.Group>
+          <Button variant="outline-light" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </div>
     );
   } else {
     return (

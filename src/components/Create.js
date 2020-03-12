@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
 function Create(props) {
@@ -41,20 +41,66 @@ function Create(props) {
 
   if (props.loggedIn) {
     return (
-      <form onSubmit={handleCreate}>
-        <h4>Create</h4>
-        <label htmlFor="year">Year: </label>
-        <input type="text" name="year" onChange={handleChange} />
-        <label htmlFor="year">Make: </label>
-        <input type="text" name="make" onChange={handleChange} />
-        <label htmlFor="model">Model: </label>
-        <input type="text" name="model" onChange={handleChange} />
-        <label htmlFor="miles">Miles: </label>
-        <input type="text" name="miles" onChange={handleChange} />
-        <label htmlFor="repair">Repair: </label>
-        <input type="text" name="repair" onChange={handleChange} />
-        <input type="submit" />
-      </form>
+      <div className="form-container">
+        <Form onSubmit={handleCreate}>
+          <Form.Row>
+            <Form.Group as={Col} controlId="formGridYear">
+              <Form.Label htmlFor="year">Year:</Form.Label>
+              <Form.Control
+                type="text"
+                name="year"
+                onChange={handleChange}
+                placeholder="Enter Year (1994)"
+              />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridMake">
+              <Form.Label htmlFor="make">Make:</Form.Label>
+              <Form.Control
+                type="text"
+                name="make"
+                onChange={handleChange}
+                placeholder="Enter Make (Ford)"
+              />
+            </Form.Group>
+          </Form.Row>
+
+          <Form.Row>
+            <Form.Group as={Col} controlId="formGridModel">
+              <Form.Label htmlFor="model">Model:</Form.Label>
+              <Form.Control
+                type="text"
+                name="model"
+                onChange={handleChange}
+                placeholder="Enter Model (Taurus)"
+              />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridMiles">
+              <Form.Label htmlFor="miles">Miles:</Form.Label>
+              <Form.Control
+                type="text"
+                name="miles"
+                onChange={handleChange}
+                placeholder="Enter Miles (105000)"
+              />
+            </Form.Group>
+          </Form.Row>
+          <Form.Group controlId="repairTextArea">
+            <Form.Label htmlFor="repair">Repair:</Form.Label>
+            <Form.Control
+              type="text"
+              name="repair"
+              onChange={handleChange}
+              as="textarea"
+              rows="3"
+            />
+          </Form.Group>
+          <Button variant="outline-light" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </div>
     );
   } else {
     return (

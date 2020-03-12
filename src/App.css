@@ -126,14 +126,17 @@
   align-items: center;
 }
 
+.form-container {
+  max-width: 80vw;
+  margin: auto;
+  margin-top: 80px;
+}
+
 #link:hover {
   text-decoration: none;
 }
 
-#link {
-  color: black;
-}
-
+#link,
 .total {
   color: black;
 }
@@ -168,4 +171,66 @@
 .list-item {
   color: #faa501;
   font-size: 5em;
+}
+
+@media (max-width: 500px) {
+  .nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo {
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 40px;
+    margin-left: -15px;
+    letter-spacing: -4px;
+  }
+  .login-message {
+    display: none;
+  }
+  .user {
+    margin: 0 20px;
+  }
+
+  .gear {
+    width: 30px;
+  }
+
+  .welcome-message {
+    font-size: 1em;
+  }
+
+  .home-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-button {
+    min-width: 80vw;
+    margin-bottom: 20px;
+  }
+
+  .car-button,
+  .wrench-button {
+    min-width: 70vw;
+  }
+
+  .list-item {
+    font-size: 3em;
+  }
+
+  .results-item {
+    font-size: 1em;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .results-text {
+    order: -1;
+    align-self: flex-start;
+  }
+
+  .button-pair {
+    margin: auto;
+  }
 }
