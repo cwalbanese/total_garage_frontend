@@ -15,9 +15,15 @@ This was a collaborative project between Chris Albanese and Dan Fruth.
 - As a user, I would like to create a new car repair
 - As a user, I would like to be able to update and delete car repairs
 
+#### Planning
+
+Please refer to the planning directory to see initial planning, including a proposal, and wireframes.
+
+[Planning Directory](https://github.com/danielfruth/total_garage_frontend/tree/master/planning)
+
 #### Technology Used
 
-- React
+- React(using hooks)
 - Bootstrap
 
 #### Getting Started
@@ -26,7 +32,7 @@ Follow the link to the hosted app on Heroku, or
 
 Fork and clone the repository, then run npm install and npm start in the root directory
 
-Refer to screenshots above to see how the app should appear.
+Refer to screenshot above to see how the app should appear.
 
 #### Contributing
 
@@ -35,3 +41,8 @@ Refer to screenshots above to see how the app should appear.
 3. Commit your Changes
 4. Push to the Branch
 5. Open a Pull Request
+
+#### Unsolved Problems
+
+1. JWT Authentication expires too quickly
+2. Header(navigation) images intermittently do not render
