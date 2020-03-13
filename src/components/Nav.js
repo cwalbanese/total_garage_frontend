@@ -10,7 +10,12 @@ function Nav(props) {
       <a href="/" id="link">
         <div className="logo">
           <span className="total">
-            T<img className="gear" src="./images/gear-logo.png" alt=""></img>
+            T
+            <img
+              className="gear"
+              src={process.env.PUBLIC_URL + '/images/gear-logo.png'}
+              alt=""
+            ></img>
             TAL
           </span>
           <span className="garage">GARAGE</span>
@@ -22,7 +27,11 @@ function Nav(props) {
         </p>
         <Dropdown>
           <Dropdown.Toggle variant="*" id="dropdown-basic">
-            <img className="user" src="./images/user.png" alt="user"></img>
+            <img
+              className="user"
+              src={process.env.PUBLIC_URL + '/images/user.png'}
+              alt="user"
+            ></img>
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
