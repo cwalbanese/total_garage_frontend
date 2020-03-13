@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
+// Component for editing past entries
 function Edit(props) {
   const [form, setForm] = useState({
     model: '',
@@ -14,14 +15,18 @@ function Edit(props) {
   const [createdId, setCreatedId] = useState('');
   const id = props.match.params.id;
 
+  // gets specific data by id on component mount
   useEffect(() => {
     fetch(`https://total-garage.herokuapp.com/garage/repairs/${id}`)
       .then(res => res.json())
       .then(setData);
   }, []);
 
+  // updates data from api for specific element
   const handleEdit = e => {
     e.preventDefault();
+
+    // uses data already in field, or any changed field
     const repair = {
       year: form.year ? form.year : data.year,
       make: form.make ? form.make : data.make,
@@ -44,16 +49,19 @@ function Edit(props) {
       });
   };
 
+  // updates var form as you type
   const handleChange = e => {
     const value = e.target.value;
     const name = e.target.name;
     setForm({ ...form, [name]: value });
   };
 
+  // thanks user for submission
   if (createdId) {
     return <Redirect to="/thankyou" />;
   }
 
+  // allows user to see form if logged in
   if (props.loggedIn) {
     return (
       <div className="form-container">

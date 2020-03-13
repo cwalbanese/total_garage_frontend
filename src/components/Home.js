@@ -1,5 +1,6 @@
 import React from 'react';
 
+// basic home page build and navigation
 function Home() {
   return (
     <div>

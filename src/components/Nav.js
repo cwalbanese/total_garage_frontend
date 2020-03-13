@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown } from 'react-bootstrap';
 
+// html and build for nav bar
 function Nav(props) {
+  // displays if logged out
   const logged_out_nav = (
     <div className="nav">
       <a href="/" id="link">
@@ -32,6 +34,7 @@ function Nav(props) {
     </div>
   );
 
+  // displays if logged in
   const logged_in_nav = (
     <div className="nav">
       <a href="/" id="link">

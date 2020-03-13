@@ -3,17 +3,21 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Form, Button, Col } from 'react-bootstrap';
 
+// form for new users to create accounts
 function SignupForm(props) {
   const [login, setLogin] = useState({
     username: '',
     password: ''
   });
 
+  // changes values as user types
   const handleChange = e => {
     const value = e.target.value;
     const name = e.target.name;
     setLogin({ ...login, [name]: value });
   };
+
+  // on login, returns to home page
   if (props.loggedIn) {
     return <Redirect to="/" />;
   }

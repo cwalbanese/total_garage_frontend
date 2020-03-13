@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function Makes(props) {
+// search page to select model
+function Models(props) {
   const [data, setData] = useState('');
   const year = props.match.params.year;
   const make = props.match.params.make;
 
+  // fetch all data and save models from chosen year and make
   useEffect(() => {
     fetch('https://total-garage.herokuapp.com/garage/repairs/')
       .then(res => res.json())
@@ -23,6 +25,7 @@ function Makes(props) {
       });
   }, []);
 
+  // if data has been saved, display list of models
   if (data && data !== []) {
     return (
       <div className="search-list">
@@ -42,8 +45,9 @@ function Makes(props) {
       </div>
     );
   } else {
+    // displays while fetch is running
     return <p>loading...</p>;
   }
 }
 
-export default Makes;
+export default Models;

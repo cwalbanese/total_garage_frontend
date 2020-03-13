@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+// search page to select make
 function Makes(props) {
   const [data, setData] = useState('');
   const year = props.match.params.year;
 
+  // fetches all data and saves only from selected year
   useEffect(() => {
     fetch('https://total-garage.herokuapp.com/garage/repairs/')
       .then(res => res.json())
@@ -20,6 +22,7 @@ function Makes(props) {
       });
   }, []);
 
+  // if data has been returned, list all makes in selected year
   if (data && data !== []) {
     return (
       <div className="search-list">
@@ -36,6 +39,7 @@ function Makes(props) {
       </div>
     );
   } else {
+    // display while fetch is loading
     return <p>loading...</p>;
   }
 }

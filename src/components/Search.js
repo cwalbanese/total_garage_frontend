@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 function Home() {
   const [data, setData] = useState('');
 
+  // fetches all data and saves years in order without repeating
   useEffect(() => {
     fetch('https://total-garage.herokuapp.com/garage/repairs/')
       .then(res => res.json())
@@ -17,6 +18,7 @@ function Home() {
       });
   }, []);
 
+  // if data was saved from fetch, displays data
   if (data) {
     return (
       <div className="search-list">
@@ -30,14 +32,9 @@ function Home() {
       </div>
     );
   } else {
+    // displays while fetch loads
     return <p>loading...</p>;
   }
 }
 
 export default Home;
-
-// , {
-//   headers: {
-//     Authorization: `JWT ${localStorage.getItem('token')}`
-//   }
-// }

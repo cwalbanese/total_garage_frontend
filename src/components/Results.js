@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 
+// results for selected data
 function Results(props) {
   const [data, setData] = useState('');
   const [deleted, setDeleted] = useState(false);
@@ -10,6 +11,7 @@ function Results(props) {
   const year = props.match.params.year;
   const loggedIn = props.loggedIn;
 
+  // deletes selected data by id
   const handleDelete = e => {
     e.preventDefault();
     if (loggedIn) {
@@ -31,6 +33,7 @@ function Results(props) {
     }
   };
 
+  // reloads data everytime something is deleted
   useEffect(() => {
     fetch('https://total-garage.herokuapp.com/garage/repairs/')
       .then(res => res.json())
@@ -45,6 +48,7 @@ function Results(props) {
 
   const handleClose = () => setLoggedOut(false);
 
+  // loggedOut will become true if you try to delete while logged out
   if (loggedOut) {
     return (
       <Modal.Dialog>
@@ -73,6 +77,7 @@ function Results(props) {
     );
   }
 
+  // if data has been returned from fetch, show the data
   if (data) {
     return (
       <div>
@@ -114,6 +119,7 @@ function Results(props) {
       </div>
     );
   } else {
+    // displays while fetch loads
     return <p>loading...</p>;
   }
 }

@@ -5,6 +5,7 @@
   font-family: 'PT Sans', sans-serif;
 }
 
+/* navigation */
 .nav {
   display: flex;
   align-items: center;
@@ -18,6 +19,25 @@
   letter-spacing: -4px;
 }
 
+#link:hover {
+  text-decoration: none;
+}
+
+#link,
+.total {
+  color: black;
+}
+
+.user {
+  width: 40px;
+}
+
+.garage {
+  color: #faa501;
+}
+
+/* home page */
+
 .home-button {
   background-color: #faa501;
   display: flex;
@@ -28,6 +48,10 @@
   height: 100%;
   flex-direction: column;
   border: 4px solid #6c757d;
+}
+
+.home-button:hover {
+  border: 4px solid #3d3b3c;
 }
 
 #search-message,
@@ -43,10 +67,6 @@
 #search-message:hover,
 #createmessage:hover {
   text-decoration: none;
-}
-
-.home-button:hover {
-  border: 4px solid #3d3b3c;
 }
 
 .welcome-div {
@@ -67,6 +87,21 @@
   font-size: 1.5em;
 }
 
+.car-button,
+.wrench-button {
+  background-color: transparent;
+  padding: 20px;
+  max-width: 30vw;
+}
+
+.home-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* results page */
+
 .results-message {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -85,6 +120,17 @@
   margin-top: 25px;
 }
 
+.orange-text {
+  color: #faa501;
+  font-weight: bold;
+}
+
+.results {
+  margin-left: 25px;
+}
+
+/* thank you page */
+
 .return-home {
   background-color: #faa501;
   border-radius: 25px;
@@ -96,21 +142,7 @@
   border: 4px solid #3d3b3c;
 }
 
-.orange-text {
-  color: #faa501;
-  font-weight: bold;
-}
-
-.results {
-  margin-left: 25px;
-}
-
-.car-button,
-.wrench-button {
-  background-color: transparent;
-  padding: 20px;
-  max-width: 30vw;
-}
+/* login page */
 
 .login-message {
   margin-top: 20px;
@@ -120,42 +152,19 @@
   border-radius: 10px;
 }
 
-.home-container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
 .form-container {
   max-width: 80vw;
   margin: auto;
   margin-top: 80px;
 }
 
-#link:hover {
-  text-decoration: none;
-}
-
-#link,
-.total {
-  color: black;
-}
-
-.user {
-  width: 40px;
-}
-
-.garage {
-  color: #faa501;
+.login {
+  display: flex;
+  align-items: center;
 }
 
 .logout {
   background-color: #f8f9fa;
-}
-
-.login {
-  display: flex;
-  align-items: center;
 }
 .gear {
   width: 40px;
@@ -172,6 +181,8 @@
   color: #faa501;
   font-size: 5em;
 }
+
+/* changes specific to mobile views */
 
 @media (max-width: 500px) {
   .nav {

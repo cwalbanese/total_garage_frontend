@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
+// Component for creating new repair submissions
 function Create(props) {
   const [form, setForm] = useState({
     model: '',
@@ -12,6 +13,7 @@ function Create(props) {
   });
   const [createdId, setCreatedId] = useState('');
 
+  // Post inputed data saved to useState under var form
   const handleCreate = e => {
     e.preventDefault();
     fetch('https://total-garage.herokuapp.com/garage/repairs/', {
@@ -29,20 +31,24 @@ function Create(props) {
       });
   };
 
+  // update form fields while typing
   const handleChange = e => {
     const value = e.target.value;
     const name = e.target.name;
     setForm({ ...form, [name]: value });
   };
 
+  // navigate to thank you screen
   if (createdId) {
     return <Redirect to="/thankyou" />;
   }
 
+  // Only display create form if user is currenty logged in
   if (props.loggedIn) {
     return (
       <div className="form-container">
         <Form onSubmit={handleCreate}>
+          {/* Year form input */}
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>Year:</Form.Label>
@@ -54,6 +60,7 @@ function Create(props) {
               />
             </Form.Group>
 
+            {/* Make form input */}
             <Form.Group as={Col}>
               <Form.Label>Make:</Form.Label>
               <Form.Control
@@ -65,6 +72,7 @@ function Create(props) {
             </Form.Group>
           </Form.Row>
 
+          {/* Model form input */}
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>Model:</Form.Label>
@@ -76,6 +84,7 @@ function Create(props) {
               />
             </Form.Group>
 
+            {/* Miles form input */}
             <Form.Group as={Col}>
               <Form.Label>Miles:</Form.Label>
               <Form.Control
@@ -87,6 +96,7 @@ function Create(props) {
             </Form.Group>
           </Form.Row>
           <Form.Group>
+            {/* Repair form input */}
             <Form.Label>Repair:</Form.Label>
             <Form.Control
               type="text"
@@ -103,6 +113,7 @@ function Create(props) {
       </div>
     );
   } else {
+    // if not logged in, display modal wih options to sugnup, login, or close
     return (
       <Modal.Dialog>
         <Modal.Header>

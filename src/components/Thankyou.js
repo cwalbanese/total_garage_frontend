@@ -1,5 +1,6 @@
 import React from 'react';
 
+// displays thank you message for creating or editing a submission
 function Thankyou() {
   return (
     <div className="search-list">
