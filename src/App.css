@@ -118,6 +118,7 @@
 .results-item {
   font-size: 28px;
   margin-top: 25px;
+  display: flex;
 }
 
 .orange-text {
