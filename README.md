@@ -1,6 +1,6 @@
 ## Total Garage
 
-![Total Garage](https://i.imgur.com/RlbKnEV.png)
+![Total Garage](https://chrisalbanese.com/images/preview4.png)
 
 #### About the Project
 
