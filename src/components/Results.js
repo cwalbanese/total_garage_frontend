@@ -12,7 +12,7 @@ function Results(props) {
   const loggedIn = props.loggedIn;
 
   // deletes selected data by id
-  const handleDelete = e => {
+  const handleDelete = (e) => {
     e.preventDefault();
     if (loggedIn) {
       let id = e.target.value;
@@ -20,9 +20,9 @@ function Results(props) {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `JWT ${localStorage.getItem('token')}`
+          Authorization: `JWT ${localStorage.getItem('token')}`,
         },
-        mode: 'cors'
+        mode: 'cors',
       }).then(
         setTimeout(() => {
           setDeleted(true);
@@ -36,11 +36,11 @@ function Results(props) {
   // reloads data everytime something is deleted
   useEffect(() => {
     fetch('https://total-garage.herokuapp.com/garage/repairs/')
-      .then(res => res.json())
-      .then(response =>
-        response.filter(a => a.year === year && a.model === model)
+      .then((res) => res.json())
+      .then((response) =>
+        response.filter((a) => a.year === year && a.model === model)
       )
-      .then(res =>
+      .then((res) =>
         res.sort((a, b) => (parseInt(a.miles) > parseInt(b.miles) ? 1 : -1))
       )
       .then(setData);
@@ -83,12 +83,12 @@ function Results(props) {
       <div>
         <p className="results-message">Results for {model}:</p>
         <div className="results">
-          {data.map(repair => (
+          {data.map((repair) => (
             <div key={repair.id}>
               <div className="results-item">
                 <div className="button-pair">
                   <Link to={'/' + repair.id + '/edit'}>
-                    <Button variant="outline-light" size="sm">
+                    <Button variant="outline-dark" size="sm">
                       Edit
                     </Button>
                   </Link>
@@ -97,7 +97,7 @@ function Results(props) {
                     id={repair.model}
                     value={repair.id}
                     onClick={handleDelete}
-                    variant="outline-light"
+                    variant="outline-dark"
                     size="sm"
                   >
                     Delete
