@@ -7,11 +7,11 @@ import { Form, Button, Col } from 'react-bootstrap';
 function LoginForm(props) {
   const [login, setLogin] = useState({
     username: '',
-    password: ''
+    password: '',
   });
 
   // update fields as user types
-  const handleChange = e => {
+  const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
     setLogin({ ...login, [name]: value });
@@ -26,7 +26,7 @@ function LoginForm(props) {
   return (
     // form html
     <div className="form-container">
-      <Form onSubmit={e => props.handleLogin(e, login)}>
+      <Form onSubmit={(e) => props.handleLogin(e, login)}>
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label htmlFor="username">Username:</Form.Label>
@@ -51,7 +51,7 @@ function LoginForm(props) {
           </Form.Group>
         </Form.Row>
 
-        <Button variant="outline-light" type="submit">
+        <Button variant="outline-dark" type="submit">
           Submit
         </Button>
       </Form>
@@ -62,5 +62,5 @@ function LoginForm(props) {
 export default LoginForm;
 
 LoginForm.propTypes = {
-  handleLogin: PropTypes.func.isRequired
+  handleLogin: PropTypes.func.isRequired,
 };

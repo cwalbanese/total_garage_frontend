@@ -7,11 +7,11 @@ import { Form, Button, Col } from 'react-bootstrap';
 function SignupForm(props) {
   const [login, setLogin] = useState({
     username: '',
-    password: ''
+    password: '',
   });
 
   // changes values as user types
-  const handleChange = e => {
+  const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
     setLogin({ ...login, [name]: value });
@@ -23,7 +23,7 @@ function SignupForm(props) {
   }
   return (
     <div className="form-container">
-      <Form onSubmit={e => props.handleSignup(e, login)}>
+      <Form onSubmit={(e) => props.handleSignup(e, login)}>
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label htmlFor="username">Username:</Form.Label>
@@ -48,7 +48,7 @@ function SignupForm(props) {
           </Form.Group>
         </Form.Row>
 
-        <Button variant="outline-light" type="submit">
+        <Button variant="outline-dark" type="submit">
           Submit
         </Button>
       </Form>
@@ -59,5 +59,5 @@ function SignupForm(props) {
 export default SignupForm;
 
 SignupForm.propTypes = {
-  handleSignup: PropTypes.func.isRequired
+  handleSignup: PropTypes.func.isRequired,
 };

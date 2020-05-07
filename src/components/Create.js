@@ -9,30 +9,30 @@ function Create(props) {
     miles: '',
     repair: '',
     year: '',
-    make: ''
+    make: '',
   });
   const [createdId, setCreatedId] = useState('');
 
   // Post inputed data saved to useState under var form
-  const handleCreate = e => {
+  const handleCreate = (e) => {
     e.preventDefault();
     fetch('https://total-garage.herokuapp.com/garage/repairs/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `JWT ${localStorage.getItem('token')}`
+        Authorization: `JWT ${localStorage.getItem('token')}`,
       },
       mode: 'cors',
-      body: JSON.stringify(form)
+      body: JSON.stringify(form),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         setCreatedId(data.id);
       });
   };
 
   // update form fields while typing
-  const handleChange = e => {
+  const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
     setForm({ ...form, [name]: value });
@@ -106,7 +106,7 @@ function Create(props) {
               rows="3"
             />
           </Form.Group>
-          <Button variant="outline-light" type="submit">
+          <Button variant="outline-dark" type="submit">
             Submit
           </Button>
         </Form>
