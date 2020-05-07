@@ -15,7 +15,7 @@ function Home() {
         <a href="/search" id="link">
           <div className="home-button">
             <img className="car-button" src="./images/car.png" alt="car"></img>
-            <p id="search-message">Search Repairs</p>
+            <p id="search-message">SEARCH</p>
           </div>
         </a>
         <a href="/create" id="link">
@@ -25,7 +25,7 @@ function Home() {
               src="./images/wrench.png"
               alt="wrench"
             ></img>
-            <p id="create-message">Create Repair</p>
+            <p id="create-message">CREATE</p>
           </div>
         </a>
       </div>
