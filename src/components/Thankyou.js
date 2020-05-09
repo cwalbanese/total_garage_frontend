@@ -7,7 +7,7 @@ function Thankyou() {
       <p className="welcome-message">
         Thank you! The action was completed successfully.
       </p>
-      <a className="list-item return-home" id="link" href="/">
+      <a className="return-home" id="link" href="/">
         Return Home
       </a>
     </div>

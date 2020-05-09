@@ -129,11 +129,12 @@
   background-color: #faa501;
   border-radius: 25px;
   padding: 15px;
-  border: 4px solid #6c757d;
+  border: 2px solid white;
+  font-size: 24px;
 }
 
 .return-home:hover {
-  border: 4px solid #3d3b3c;
+  border: 2px solid black;
 }
 
 /* login page */
