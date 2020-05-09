@@ -94,5 +94,5 @@ export default Nav;
 
 Nav.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
-  handleLogout: PropTypes.func.isRequired
+  handleLogout: PropTypes.func.isRequired,
 };

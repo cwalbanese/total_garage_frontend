@@ -175,7 +175,7 @@
 
 /* changes specific to mobile views */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .nav {
     display: flex;
     justify-content: center;
@@ -232,11 +232,5 @@
 
   .button-pair {
     margin: auto;
-  }
-}
-
-@media (max-width: 700px) {
-  .login-message {
-    display: none;
   }
 }
